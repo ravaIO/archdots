@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+CHOICE=$(printf "Yes\nNo" | dmenu -i -p "Power Off")
+
+[ "$CHOICE" == "Yes" ] && shutdown -P now;
+
+exit

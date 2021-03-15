@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+#DIRNAME=$(printf "docs\ndl\nvids\npics" | dmenu -i -p "Directories: ")
+DIRNAME=$(find $HOME -maxdepth 2 -type d ! -name '.*' ! -path "$HOME/.*/*" 2>/dev/null | cut -d "/" -s -f 4,5  | dmenu -i -p "Directories: ")
+
+[ "$DIRNAME" != "" ] && $TERMINAL -e vifm ~/$DIRNAME

@@ -1,0 +1,47 @@
+#!/bin/sh
+
+### ALIASES ###
+
+# System commands
+alias p="sudo pacman --color auto"
+alias SS="sudo systemctl"
+
+# Manipulation commands
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias pud='pushd'
+alias pod='popd'
+
+# VIM
+alias sv='sudo nvim'
+alias v='nvim'
+
+# GIT
+alias g='git'
+alias gs='git status'
+
+# LISTING
+alias la='ls -A'
+#alias ll='ls -alF'
+alias ll='ls -lh'
+alias l='ls -CF'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias du='du -h'
+
+
+# PROGRAMS
+alias yt='youtube-dl'
+alias ytb='youtube-dl -f bestvideo+bestaudio'
+alias yta='youtube-dl --extract-audio --audio-format m4a'
+
+# Pass
+alias ipass='pass insert -m'
+alias rpass='pass rm'
+alias epass='pass edit'

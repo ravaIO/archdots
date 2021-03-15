@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+df -h | awk '/sda4/ {print $4}'

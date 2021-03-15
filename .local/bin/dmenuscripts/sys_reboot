@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+CHOICE=$(printf "Yes\nNo" | dmenu -i -p "Reboot")
+
+[ "$CHOICE" == "Yes" ] && reboot
+
+exit

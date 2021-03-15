@@ -1,0 +1,45 @@
+# Power Options
+super + F12
+    $HOME/.local/bin/dmenuscripts/sys_poweroff
+super + F11
+    $HOME/.local/bin/dmenuscripts/sys_reboot
+
+# Volume Controls
+super + shift + equal
+    pamixer -i 2
+super + shift + minus
+    pamixer -d 2
+super + equal
+    pamixer -i 5
+super + minus
+    pamixer -d 5
+super + shift + m
+    $HOME/.local/bin/scripts/mute
+
+# File manager
+super + shift + f
+    $TERMINAL -e vifm
+super + e
+    $HOME/.local/bin/dmenuscripts/vifmshort
+
+# Browser
+super + w
+    $BROWSER
+
+# NewsBoat(RSS reader)
+super + shift + n
+    $TERMINAL -e newsboat
+
+# Weather report
+super + shift + w
+    $TERMINAL -e curl wttr.in
+
+# Screenshot
+Print
+    setsid -f scrot -d 1 -q 100 -e 'mv $f ~/pics/scrot'
+control + shift + Print
+    setsid -f scrot -d 1 -s -q 100 -e 'mv $f ~/pics/scrot'
+
+# Screencast
+super + Print
+    $HOME/.local/bin/dmenuscripts/recorder

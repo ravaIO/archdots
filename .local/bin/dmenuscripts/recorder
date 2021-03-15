@@ -1,0 +1,15 @@
+#!/bin/sh
+
+FFPID=$(pgrep -u $USER ffmpeg)
+#-f alsa -i default 
+
+case $FFPID in
+    "") ffmpeg -f x11grab \
+        -framerate 60 \
+        -s 1920x1200 -i :0.0 \
+        -c:v libx264 -r 30 -c:a flac \
+        $HOME/vids/screen/screen_$(date +%M_%k).mkv
+        ;;
+    *) kill -s 15 $FFPID
+esac
+

@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+GETMUTE=$(pamixer --get-mute)
+
+[ $GETMUTE = "true" ] && pamixer -t
+[ $GETMUTE = "false" ] && pamixer -m

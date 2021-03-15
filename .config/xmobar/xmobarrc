@@ -1,0 +1,38 @@
+Config { font = "xft:monospace:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = ["xft:Font Awesome 5 Free:pixelsize=12:antialias=ture:hinting=ture", "xft:Font Awesome 5 Free Solid:pixelsize=12:antialias=ture:hinting=ture"],
+       --, borderColor = "white"
+       border = NoBorder,
+       bgColor = "#1d2021",
+       fgColor = "#ebdbb2",
+       alpha = 255,
+       position = Top,
+       textOffset = -1,
+       iconOffset = -1,
+       lowerOnStart = True,
+       pickBroadest = False,
+       persistent = False,
+       hideOnStart = False,
+       iconRoot = ".",
+       allDesktops = True,
+       overrideRedirect = True,
+       commands = [ Run Cpu ["--template" , "<total>%"
+                             --, "--Low"      , "10"         -- units: %
+                             --, "--High"     , "15"         -- units: %
+                             --, "--low"      , "#FFFFFF"
+                             --, "--normal"   , "#ce8639"
+                             --, "--high"     , "#ea4909"
+                             ] 20,
+                    Run Com "cputemp" [] "" 20,
+                    Run Com "memory" [] "" 20,
+                    Run Com "updchk" [] "" 0,
+                    Run Com "homeusage" [] "" 0,
+                    Run Alsa "default" "Master" [],
+                    Run Date "%a %_d %b %H:%M" "date" 600,
+                    Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }\
+                    \{<fn=2>%rec%</fn> | <fn=2></fn> %updchk% | <fn=2></fn> %homeusage% | <fn=2></fn> %cpu% - %cputemp% | <fn=2></fn> %memory% <fc=#ee9a00></fc>| %alsa:default:Master%| <fn=1></fn> %date% |"
+}
+

@@ -1,0 +1,6 @@
+set selection-clipboard clipboard
+set page-padding 5
+set guioptions ""
+map K zoom in
+map J zoom out
+map i recolor
