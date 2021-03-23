@@ -7,6 +7,8 @@ import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
 import Graphics.X11.Xlib.Cursor
+import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.NoBorders
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -212,12 +214,15 @@ myManageHook = composeAll
       className =? "Gimp"                  --> doShift ( myWorkspaces !! 6 ),
       className =? "Gimp"                  --> doFloat,
       className =? "Sublime_text"          --> doShift ( myWorkspaces !! 3 ),
+      (className =? "Sublime_text"         <&&> resource =? "GtkFileChooserDialog") --> doFloat,
       className =? "Code"                  --> doShift ( myWorkspaces !! 3 ),
+      className =? "Brave-browser"         --> doShift  ( myWorkspaces !! 0 ),
+      className =? "Brave-browser"         --> doFullFloat,
       className =? "VirtualBox Manager"    --> doShift  ( myWorkspaces !! 8 ),
       className =? "VirtualBox Manager"    --> doFloat,
       className =? "VirtualBox Machine"    --> doShift  ( myWorkspaces !! 4 ),
       className =? "VirtualBox Machine"    --> doFloat,
-      className =? "firefoxdeveloperedition"    --> doShift  ( myWorkspaces !! 0 ),
+      --className =? "firefoxdeveloperedition"    --> doShift  ( myWorkspaces !! 0 ),
       (className =? "firefoxdeveloperedition" <&&> resource =? "Dialog") --> doFloat,
       resource  =? "desktop_window"        --> doIgnore,
       resource  =? "kdesktop"              --> doIgnore ]
@@ -293,7 +298,7 @@ defaults = def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = myLayout,
+        layoutHook         = smartBorders myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
