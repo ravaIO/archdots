@@ -15,13 +15,21 @@ Config { font = "xft:monospace:pixelsize=12:antialias=true:hinting=true"
        iconRoot = ".",
        allDesktops = True,
        overrideRedirect = True,
-       commands = [ Run Cpu ["--template" , "<total>%"
-                             --, "--Low"      , "10"         -- units: %
-                             --, "--High"     , "15"         -- units: %
-                             --, "--low"      , "#FFFFFF"
-                             --, "--normal"   , "#ce8639"
-                             --, "--high"     , "#ea4909"
+       commands = [ Run Cpu [
+                            "--template" , "<total>%"
+                            , "-L"      , "50"         --units: %
+                            , "-H"     , "80"         --units: %
+                            , "-l"      , "#98971a"
+                            , "-n"      , "#d79921"
+                            , "-h"     , "#cc241d"
                              ] 20,
+--                    Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+--                             , "--Low"      , "50"         -- units: %
+--                             , "--High"     , "85"         -- units: %
+--                             , "--low"      , "darkgreen"
+--                             , "--normal"   , "darkorange"
+--                             , "--high"     , "darkred"
+--                             ] 10,
                     Run Com "cputemp" [] "" 20,
                     Run Com "memory" [] "" 20,
                     Run Com "updchk" [] "" 0,
