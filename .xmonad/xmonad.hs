@@ -38,7 +38,7 @@ myModMask       = mod4Mask
 
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["web","sys","bks","dev","lab","junk","img","rec","vm"] 
+myWorkspaces    = ["web","sys","bks","dev","lab","junk","img","rec","vm"] ++ map show [1..9]
 -- ++ map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
@@ -57,7 +57,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- launch passmenu
-    , ((modm .|. shiftMask, xK_p     ), spawn "passmenu --type")
+    , ((modm .|. shiftMask, xK_i     ), spawn "passmenu --type")
 
     -- close focused window
     , ((modm, xK_c     ), kill)
@@ -218,10 +218,12 @@ myManageHook = composeAll
       className =? "Code"                  --> doShift ( myWorkspaces !! 3 ),
       className =? "Brave-browser"         --> doShift  ( myWorkspaces !! 0 ),
       className =? "Brave-browser"         --> doFullFloat,
+      className =? "jetbrains-idea-ce"         --> doFullFloat,
       className =? "VirtualBox Manager"    --> doShift  ( myWorkspaces !! 8 ),
       className =? "VirtualBox Manager"    --> doFloat,
       className =? "VirtualBox Machine"    --> doShift  ( myWorkspaces !! 4 ),
       className =? "VirtualBox Machine"    --> doFloat,
+      className =? "Audacity"              --> doFloat,
       --className =? "firefoxdeveloperedition"    --> doShift  ( myWorkspaces !! 0 ),
       (className =? "firefoxdeveloperedition" <&&> resource =? "Dialog") --> doFloat,
       resource  =? "desktop_window"        --> doIgnore,
