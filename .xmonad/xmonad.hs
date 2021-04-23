@@ -38,7 +38,7 @@ myModMask       = mod4Mask
 
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["web","sys","bks","dev","lab","junk","img","rec","vm"] ++ map show [1..9]
+myWorkspaces    = ["\61612", "\61728", "\63159", "\61729", "\62610", "\62161", "\61502", "\61501", "\61614"]
 -- ++ map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
@@ -274,8 +274,32 @@ myStartupHook = setDefaultCursor xC_left_ptr
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-
-main = xmonad =<< xmobar (docks defaults)
+_windowTitle = xmobarColor "#ebdbb2" "" . shorten 100
+_currentWindow = xmobarColor "#ebdbb2" "" . wrap "<fn=0>[</fn><fn=2>" "</fn><fn=0>]</fn>"
+_activeWindow = xmobarColor "#ebdbb2" "" . wrap "*<fn=2>" "</fn> "
+_inActiveWindow = xmobarColor "#ebdbb2" "" . wrap " <fn=2>" "</fn> "
+_sep = "<fc=#ebdbb2> | </fc>"
+_urgentWindow = xmobarColor "#ebdbb2" "" . wrap "!<fn=2>" "</fn>"
+_xmobar h = xmobarPP {
+  ppOutput = hPutStrLn h,
+  ppTitle = _windowTitle,
+  ppHidden = _activeWindow,
+  ppHiddenNoWindows = _inActiveWindow,
+  ppSep = _sep,
+  ppUrgent = _urgentWindow,
+  ppVisible = xmobarColor "#ffffff" "",
+  ppCurrent = _currentWindow,
+  ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+  }
+main = do
+  h <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
+  xmonad $ defaults {
+    logHook = dynamicLogWithPP $ _xmobar h,
+    manageHook         = manageDocks <+> manageHook defaults,
+    layoutHook         = avoidStruts  $ layoutHook defaults,
+    handleEventHook    = handleEventHook defaults <+> docksEventHook
+  }
+-- =<< xmobar (docks defaults)
     --xmproc <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
     --xmonad $ docks defaults
 -- A structure containing your configuration settings, overriding
