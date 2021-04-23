@@ -289,7 +289,14 @@ _xmobar h = xmobarPP {
   ppUrgent = _urgentWindow,
   ppVisible = xmobarColor "#ffffff" "",
   ppCurrent = _currentWindow,
-  ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+  ppLayout  = (\layout -> case layout of
+    "Spacing Tall" -> "[|]"
+    "Mirror Tall" -> "[-]"
+    "ThreeCol"    -> "[||]"
+    "Tabbed"      -> "[_]"
+    "Gimp"        -> "[&]"
+    )
+
   }
 main = do
   h <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
