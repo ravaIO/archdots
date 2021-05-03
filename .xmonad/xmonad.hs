@@ -38,7 +38,7 @@ myModMask       = mod4Mask
 
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["\61612", "\61728", "\63159", "\61729", "\62610", "\62161", "\61502", "\61501", "\61614"]
+myWorkspaces    = ["\61461", "\61728", "\63159", "\61729", "\62610", "\62161", "\61502", "\61501", "\61612"]
 -- ++ map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
@@ -54,10 +54,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    --, ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- launch passmenu
-    , ((modm .|. shiftMask, xK_i     ), spawn "passmenu --type")
+    --, ((modm .|. shiftMask, xK_i     ), spawn "passmenu --type")
 
     -- close focused window
     , ((modm, xK_c     ), kill)
@@ -120,16 +120,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Volume controls
-    , ((modm, xK_equal), spawn "pamixer -i 5")
-    , ((modm, xK_minus), spawn "pamixer -d 5")
-    , ((modm .|. shiftMask, xK_equal), spawn "pamixer -i 2")
-    , ((modm .|. shiftMask, xK_minus), spawn "pamixer -d 2")
-    , ((modm .|. shiftMask, xK_m), spawn "$HOME/.local/bin/scripts/mute")
-    , ((modm, xK_Print), spawn "$HOME/.local/bin/dmenuscripts/recorder")
-    , ((modm, xK_F11), spawn "$HOME/.local/bin/dmenuscripts/sys_reboot")
-    , ((modm, xK_F12), spawn "$HOME/.local/bin/dmenuscripts/sys_poweroff")
+    --, ((modm, xK_equal), spawn "pamixer -i 5")
+    --, ((modm, xK_minus), spawn "pamixer -d 5")
+    --, ((modm .|. shiftMask, xK_equal), spawn "pamixer -i 2")
+    --, ((modm .|. shiftMask, xK_minus), spawn "pamixer -d 2")
+    --, ((modm .|. shiftMask, xK_m), spawn "$HOME/.local/bin/scripts/mute")
+    --, ((modm, xK_Print), spawn "$HOME/.local/bin/dmenuscripts/recorder")
+    --, ((modm, xK_F11), spawn "$HOME/.local/bin/dmenuscripts/sys_reboot")
+    --, ((modm, xK_F12), spawn "$HOME/.local/bin/dmenuscripts/sys_poweroff")
 -- , ((modm, xK_e), (spawn (myTerminal ++ (" $HOME/.local/bin/dmenuscripts/vifmshort"))))
-    , ((modm, xK_e), spawn " $HOME/.local/bin/dmenuscripts/vifmshort")
+    --, ((modm, xK_e), spawn " $HOME/.local/bin/dmenuscripts/vifmshort")
 
     , ((modm, xK_f),    sendMessage ToggleStruts)
     ]
@@ -216,10 +216,10 @@ myManageHook = composeAll
       className =? "Sublime_text"          --> doShift ( myWorkspaces !! 3 ),
       (className =? "Sublime_text"         <&&> resource =? "GtkFileChooserDialog") --> doFloat,
       className =? "Code"                  --> doShift ( myWorkspaces !! 3 ),
-      className =? "Brave-browser"         --> doShift  ( myWorkspaces !! 0 ),
+      className =? "Brave-browser"         --> doShift  ( myWorkspaces !! 8 ),
       className =? "Brave-browser"         --> doFullFloat,
       className =? "jetbrains-idea-ce"         --> doFullFloat,
-      className =? "VirtualBox Manager"    --> doShift  ( myWorkspaces !! 8 ),
+      className =? "VirtualBox Manager"    --> doShift  ( myWorkspaces !! 5 ),
       className =? "VirtualBox Manager"    --> doFloat,
       className =? "VirtualBox Machine"    --> doShift  ( myWorkspaces !! 4 ),
       className =? "VirtualBox Machine"    --> doFloat,

@@ -43,3 +43,11 @@ control + shift + Print
 # Screencast
 super + Print
     $HOME/.local/bin/dmenuscripts/recorder
+
+# Passmenu
+super + shift + i
+    passmenu --type
+
+# Dynamic menu
+super + p
+    dmenu_run
