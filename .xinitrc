@@ -1,8 +1,8 @@
 # Remap caps:esc & add Kurdish keyboard
-[ -f $HOME/.config/.Xmodmap ] && xmodmap $HOME/.config/.Xmodmap
+[ -f $HOME/.config/Xmodmap ] && xmodmap $HOME/.config/Xmodmap
 xmodmap -e "clear lock"
 
-# Run .xprofile to set wallpaper & run compositor before WM starts
+# Run .xprofile to set wallpaper & run compositor
 [ -f $HOME/.xprofile ] && . $HOME/.xprofile
 
 # Run simple X hotkey daemon
