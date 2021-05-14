@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+systemctl start httpd
+systemctl start mariadb

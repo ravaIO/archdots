@@ -21,6 +21,8 @@ set wildmode=longest,list,full
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+colorscheme nord
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
