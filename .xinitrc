@@ -14,4 +14,4 @@ sxhkd &
 
 # Execute XMonad WM
 exec xmonad
-# exec dwm
+#exec dwm
