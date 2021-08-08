@@ -1,4 +1,4 @@
-Config { font = "xft:monospace:pixelsize=12:antialias=true:hinting=true"
+Config { font = "xft:Fira Code:pixelsize=12:antialias=true:hinting=true"
        , additionalFonts = ["xft:Font Awesome 5 Free:pixelsize=12:antialias=ture:hinting=ture", "xft:Font Awesome 5 Free Solid:pixelsize=12:antialias=ture:hinting=ture"],
        --, borderColor = "white"
        border = NoBorder,

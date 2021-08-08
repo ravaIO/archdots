@@ -2,12 +2,12 @@
 import XMonad
 import Data.Monoid
 import System.Exit
+import Graphics.X11.Xlib.Cursor
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
-import XMonad.Layout.Spacing
-import Graphics.X11.Xlib.Cursor
 import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 
 import qualified XMonad.StackSet as W
@@ -217,6 +217,7 @@ myManageHook = composeAll
       className =? "Sublime_text"          --> doShift ( myWorkspaces !! 3 ),
       (className =? "Sublime_text"         <&&> resource =? "GtkFileChooserDialog") --> doFloat,
       className =? "Code"                  --> doShift ( myWorkspaces !! 3 ),
+      className =? "Code"                  --> doFullFloat,
       className =? "Brave-browser"         --> doShift  ( myWorkspaces !! 8 ),
       className =? "Brave-browser"         --> doFullFloat,
       className =? "VirtualBox Manager"    --> doShift  ( myWorkspaces !! 5 ),

@@ -9,7 +9,6 @@ export READER="zathura"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 [ -d $HOME/.local/bin ] && PATH="$HOME/.local/bin:$PATH"
-[ -d /home/linuxbrew/.linuxbrew/bin ] && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
 
